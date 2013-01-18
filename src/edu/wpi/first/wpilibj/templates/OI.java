@@ -44,11 +44,14 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
     private Joystick stickOne, stickTwo;
     private JoystickButton triggerOne, triggerTwo;
+    //Makes (private) some blank objects
     public OI(){
         stickOne = new Joystick(1);
         stickTwo = new Joystick(2);
         triggerOne = new JoystickButton(stickOne, Joystick.ButtonType.kTop.value);
         triggerTwo = new JoystickButton(stickTwo, Joystick.ButtonType.kTop.value);
+    
+        //And gives them all values
     }
     public Joystick getJoystick(int num){
         Joystick joystickDefault = null;
@@ -59,6 +62,7 @@ public class OI {
             joystickDefault=stickTwo;        
         }
         return joystickDefault;
+        //If this method is called with input 1 it returns the first joystick, and if 2 is inputed then it returns the second joystick
     }
     public JoystickButton getTriggerOne(){
         return triggerOne;
@@ -66,5 +70,6 @@ public class OI {
     public JoystickButton getTriggerTwo(){
         return triggerTwo;
     }
+    //These should be obvious 
 }
 

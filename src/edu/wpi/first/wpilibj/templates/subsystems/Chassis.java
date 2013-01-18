@@ -26,8 +26,10 @@ public class Chassis extends Subsystem {
     public Chassis(){
         drive = new RobotDrive(1,2);
         drive.setSafetyEnabled(false);
+        //Initializes some parts of the chasis. 
     }
     public void tankDrive(double stickOne, double stickTwo){
         drive.tankDrive(stickOne, stickTwo);
+        //Creates a method of chassis that works as a tank drive
     }
 }

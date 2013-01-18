@@ -60,5 +60,6 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        //Complex trickery from the libraries that makes the robot use the code created in other files
     }
 }

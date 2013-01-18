@@ -12,11 +12,13 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * @author Spruce
  */
 public class TankDrive extends CommandBase {
-    Joystick stickOne =  oi.getJoystick(1);
+       
+        Joystick stickOne =  oi.getJoystick(1);
         Joystick stickTwo = oi.getJoystick(2);
         JoystickButton triggerOne = oi.getTriggerOne();
         JoystickButton triggerTwo = oi.getTriggerTwo();
-        
+        double speedModifier = 0.75;
+        //Pre-Defines various objects recived from the OI class
     
     public TankDrive() {
         // Use requires() here to declare subsystem dependencies
@@ -30,15 +32,17 @@ public class TankDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-         while(triggerOne.get()) {
-           chassis.tankDrive((stickOne.getAxis(Joystick.AxisType.kY)/2), (stickTwo.getAxis(Joystick.AxisType.kY)/2));
-         }
-         while(triggerTwo.get()){
-             chassis.tankDrive(stickOne.getAxis(Joystick.AxisType.kY), stickTwo.getAxis(Joystick.AxisType.kY));
-         }
-         
-           chassis.tankDrive((stickOne.getAxis(Joystick.AxisType.kY)*.75), (stickTwo.getAxis(Joystick.AxisType.kY)*.75));
-         
+            if (stickOne.getRawButton(3)){
+                speedModifier = 0.6;
+            }
+            else if(stickTwo.getRawButton(3)){
+                speedModifier = 1;
+            }
+            else if(triggerOne.get()&&triggerTwo.get()){
+                speedModifier = 0.75;
+            }
+           chassis.tankDrive((stickOne.getAxis(Joystick.AxisType.kY)*speedModifier), (stickTwo.getAxis(Joystick.AxisType.kY)*speedModifier));
+         //While no triggers are pressed the robot moves at .75 the joystick input
     }
     
 
