@@ -15,8 +15,7 @@ public class TankDrive extends CommandBase {
        
         Joystick stickOne =  oi.getJoystick(1);
         Joystick stickTwo = oi.getJoystick(2);
-        JoystickButton triggerOne = oi.getTriggerOne();
-        JoystickButton triggerTwo = oi.getTriggerTwo();
+        
         double speedModifier = 0.75;
         //Pre-Defines various objects recived from the OI class
     
@@ -38,7 +37,7 @@ public class TankDrive extends CommandBase {
             else if(stickTwo.getRawButton(3)){
                 speedModifier = 1;
             }
-            else if(triggerOne.get()&&triggerTwo.get()){
+            else if(stickTwo.getRawButton(2)&&stickTwo.getRawButton(2)){
                 speedModifier = 0.75;
             }
            chassis.tankDrive((stickOne.getAxis(Joystick.AxisType.kY)*speedModifier), (stickTwo.getAxis(Joystick.AxisType.kY)*speedModifier));
