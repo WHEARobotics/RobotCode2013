@@ -11,8 +11,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * @author Spruce
  */
 public class Shoot extends CommandBase {
-    JoystickButton triggerOne = oi.getTriggerOne();
-    JoystickButton triggerTwo = oi.getTriggerTwo();
+    
     public Shoot() {
         requires(shooter);
         
@@ -24,8 +23,7 @@ public class Shoot extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        shooter.disable();
-        if (triggerOne.get()&&triggerTwo.get()){
+        if (oi.getButton(1, 1).get()&&oi.getButton(2, 1).get()){
             shooter.shoot(0.5, 0.5);
         }
         else{

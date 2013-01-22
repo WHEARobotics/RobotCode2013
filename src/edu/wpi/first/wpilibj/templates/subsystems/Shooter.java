@@ -6,6 +6,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.templates.commands.Shoot;
 
 /**
  *
@@ -22,7 +23,7 @@ public class Shooter extends Subsystem {
 }
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new Shoot());
     }
     
     public void disable(){

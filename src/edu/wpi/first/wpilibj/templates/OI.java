@@ -43,13 +43,17 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
     private Joystick stickOne, stickTwo;
-    private JoystickButton triggerOne, triggerTwo;
+    private JoystickButton triggerOne, triggerTwo, stickOneButtonTwo, stickOneButtonThree, stickTwoButtonThree, stickTwoButtonTwo;
     //Makes (private) some blank objects
     public OI(){
         stickOne = new Joystick(1);
         stickTwo = new Joystick(2);
         triggerOne = new JoystickButton(stickOne, Joystick.ButtonType.kTop.value);
-        triggerTwo = new JoystickButton(stickTwo, Joystick.ButtonType.kTop.value);
+        triggerTwo = new JoystickButton(stickTwo, Joystick.ButtonType.kNumButton.value);
+        stickOneButtonTwo = new JoystickButton(stickTwo, 2);
+        stickOneButtonThree = new JoystickButton(stickTwo, 3);
+        stickTwoButtonThree = new JoystickButton(stickTwo, 3);
+        stickTwoButtonTwo = new JoystickButton(stickTwo, 2);
     
         //And gives them all values
     }
@@ -64,11 +68,33 @@ public class OI {
         return joystickDefault;
         //If this method is called with input 1 it returns the first joystick, and if 2 is inputed then it returns the second joystick
     }
-    public JoystickButton getTriggerOne(){
-        return triggerOne;
-    }
-    public JoystickButton getTriggerTwo(){
-        return triggerTwo;
+    
+    public JoystickButton getButton(int num, int num2){
+        JoystickButton buttonDefault = null;
+        if (num==1){
+            if(num2==1){
+                buttonDefault=triggerOne;
+            }
+            else if (num2==2){
+                buttonDefault=stickOneButtonTwo;
+            }        
+            else if(num2==3){
+                buttonDefault=stickOneButtonThree;
+            }
+        }
+        else if (num==2){
+            if(num2==1){
+                buttonDefault=triggerTwo;
+            }
+            else if(num2==2){
+                buttonDefault=stickTwoButtonTwo;
+            }        
+            else if(num2==3){
+                buttonDefault=stickTwoButtonThree;
+            }
+        }
+        return buttonDefault;
+        //If this method is called with input 1 it returns the first joystick, and if 2 is inputed then it returns the second joystick
     }
     //These should be obvious 
 }

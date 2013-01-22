@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class TankDrive extends CommandBase {
        
-        Joystick stickOne =  oi.getJoystick(1);
-        Joystick stickTwo = oi.getJoystick(2);
+       
+         
         
         double speedModifier = 0.75;
         //Pre-Defines various objects recived from the OI class
@@ -31,16 +31,16 @@ public class TankDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-            if (stickOne.getRawButton(3)){
+            if (oi.getButton(1,3).get()){
                 speedModifier = 0.6;
             }
-            else if(stickTwo.getRawButton(3)){
+            else if(oi.getButton(2,3).get()){
                 speedModifier = 1;
             }
-            else if(stickTwo.getRawButton(2)&&stickTwo.getRawButton(2)){
+            else if(oi.getButton(1,2).get()&&oi.getButton(2, 2).get()){
                 speedModifier = 0.75;
             }
-           chassis.tankDrive((stickOne.getAxis(Joystick.AxisType.kY)*speedModifier), (stickTwo.getAxis(Joystick.AxisType.kY)*speedModifier));
+           chassis.tankDrive((oi.getJoystick(1).getAxis(Joystick.AxisType.kY)*speedModifier), (oi.getJoystick(2).getAxis(Joystick.AxisType.kY)*speedModifier));
          //While no triggers are pressed the robot moves at .75 the joystick input
     }
     
