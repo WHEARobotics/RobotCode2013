@@ -18,7 +18,7 @@ public class Shooter extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     public Shooter(){
-     Wheel = new Jaguar(3);
+     Wheel = new Jaguar(4);
       
 }
     public void initDefaultCommand() {

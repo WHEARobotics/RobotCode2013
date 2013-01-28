@@ -24,7 +24,7 @@ public class Chassis extends Subsystem {
         
     }
     public Chassis(){
-        drive = new RobotDrive(1,2);
+        drive = new RobotDrive(2,3);
         drive.setSafetyEnabled(false);
         //Initializes some parts of the chasis. 
     }
