@@ -4,6 +4,7 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
@@ -23,9 +24,17 @@ public class Shoot extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        
         if (oi.getButton(1, 1).get()&&oi.getButton(2, 1).get()){
-            shooter.shoot(0.5, 0.5);
+            shooter.shoot(1);
         }
+        else if(oi.getButton(2, 1).get()){
+            shooter.shoot(.5);
+        }
+        else if(oi.getButton(1, 1).get()){
+            shooter.shoot(oi.getJoystick(1).getAxis(Joystick.AxisType.kZ));
+        }
+        
         else{
             shooter.disable();
         }
