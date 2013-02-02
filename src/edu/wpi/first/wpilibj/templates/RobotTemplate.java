@@ -9,6 +9,8 @@ package edu.wpi.first.wpilibj.templates;
 
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
@@ -22,6 +24,10 @@ import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
  * directory.
  */
 public class RobotTemplate extends IterativeRobot {
+         Solenoid LEDPower = new Solenoid(1);
+         Joystick stick = new Joystick(1);
+         boolean ON = true;
+         boolean OFF = false;
 
     Command autonomousCommand;
 
@@ -35,6 +41,7 @@ public class RobotTemplate extends IterativeRobot {
 
         // Initialize all subsystems
         CommandBase.init(); 
+        LEDPower.set(ON);
     }
 
    public void autonomousInit() {
